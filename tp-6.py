@@ -69,10 +69,34 @@ def decoupage_pas_inv(L, i, j, p):
 	return listToReturn
 
 comptine = ['ca', 'cb', 'ac', 'gd', 'gf', 'en', 'eh']
-#print(comptine[5:2:-1])
-print(decoupage_pas_inv(comptine, 5, 2, -2))
+
 assert decoupage_pas(comptine, 2, 5, 2) == comptine[2:5:2]
 assert decoupage_pas_inv(comptine, 5, 2, -2) == comptine[5:2:-2]
+def normalisation(k ,l):
+	if k< 0:
+		if -k<=l:
+			return l + k
+		else:
+			return 0;
+	else:
+		if k>l:
+			return l
+		else:
+			return k
+def decoupage(L, i, j, p):
+	if(j>i):
+		indexbeg = normalisation(i,j);
+		indexEnd = j;
+	else:
+		indexbeg = normalisation(j,i);
+		indexEnd = i;
+	if(p<0):
+		return decoupage_pas_inv(L, indexEnd, indexbeg, p)
+	else:
+		return decoupage_pas(L, indexbeg, indexEnd, p)
+print(decoupage(comptine, -2, 6, -1))
+assert decoupage(comptine, 2, 5, 2) == comptine[2:5:2]
+assert decoupage(comptine, 5, 2, -2) == comptine[5:2:-2]
 
 #6.8
 def entrelacement(L1, L2):
@@ -83,7 +107,6 @@ def entrelacement(L1, L2):
 		listToRetuen.append(L2[index])
 		index += 1
 	return listToRetuen;
-print(entrelacement([1, 2,3], [4, 5, 6]))
 
 
 
