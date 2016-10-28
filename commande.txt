@@ -1,0 +1,4 @@
+Lait 12 2.0
+The 8 1.5
+Tomate 6 1.5
+Fromage 9 8.5
